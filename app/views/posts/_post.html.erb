@@ -1,6 +1,11 @@
 <div id="<%= dom_id post %>" class="relative flex flex-col items-center justify-center bg-white shadow-lg rounded-lg p-4 mb-6">
   <%= link_to post do %>
-    <%= image_tag post.images.first, class: "w-full rounded-lg h-64 object-cover transition-transform hover:scale-105" %>
+    <% if post.images.attached? %>
+  <%= image_tag post.images.first, class: "w-full rounded-lg h-64 object-cover transition-transform hover:scale-105" %>
+<% else %>
+  <%= image_tag "heart.png", class: "w-full rounded-lg h-64 object-cover opacity-50" %>
+<% end %>
+
   <% end %>
   <p class="mt-4 text-2xl text-gray-800 font-bold"><%= post.title %></p>
   <div class="flex items-center mt-4 space-x-2">
