@@ -1,0 +1,25 @@
+<% content_for :title, "Posts" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+
+  <div id="posts" class="min-w-full grid md:grid-cols-3 gap-4">
+           <% if @posts.any? %>
+           <% @posts.each do |post| %>
+  
+        <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
+          <%= render post %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-center my-10">No posts found.</p>
+    <% end %>
+  </div>
+  <br>
+  <% if current_user%>
+  <%= link_to "Create Posts", new_post_path, class:"w-35 bg-blue-500 p-6 mt-17 rounded-lg " %>
+  <%end %>
+</div>

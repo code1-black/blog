@@ -1,0 +1,11 @@
+<div class="w-full  flex  items-center p-10 mt-12">
+	<%= link_to "All Posts", posts_path , class:"text-3xl border-b-2 " %>
+	<%if categories.any? %>
+	<%categories.each do |category|%>
+	<div class="mx-5">
+	<%= render category%>
+    </div>
+	<% end %>
+	<%end %>
+
+</div>

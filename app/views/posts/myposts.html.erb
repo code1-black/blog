@@ -1,0 +1,16 @@
+<div id="posts" class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <div class="bg-white shadow-lg rounded-lg flex flex-col items-center p-6">
+        <%= render post %>
+        <div class="flex flex-col sm:flex-row w-full justify-center items-center mt-4 space-y-2 sm:space-y-0 sm:space-x-2">
+          <%= link_to "Edit", edit_post_path(post), class: "rounded-md px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-700 font-semibold transition" %>
+          <%= link_to "Back", posts_path, class: "rounded-md px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold transition" %>
+          <%= button_to "Delete", post, method: :delete, form_class: "inline", class: "rounded-md px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-semibold transition", data: { turbo_confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="text-center my-10 text-lg text-gray-500">You have not posted yet.</p>
+  <% end %>
+</div>
