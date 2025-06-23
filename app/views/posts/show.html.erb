@@ -8,19 +8,14 @@
   <h1 class="font-bold text-4xl">Showing post</h1>
 
   <%= render @post %>
-  div class="mt-8">
+  <div class="mt-8">
   <h2 class="text-2xl font-bold mb-4">Comments</h2>
   <div id="comments">
     <%= render @post.comments %>
   </div>
-
+  </div>
   <% if user_signed_in? %>
-    <%= form_with(model: [@post, Comment.new], data: { turbo_stream: true }, class: "mt-4") do |form| %>
-      <div class="mb-2">
-        <%= form.text_area :body, placeholder: "Write a comment...", class: "w-full p-2 rounded border" %>
-      </div>
-      <%= form.submit "Add Comment", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
-    <% end %>
+    <%= render "comments/form", post: @post, comment: Comment.new %>
   <% else %>
     <p class="text-gray-500">You must be logged in to comment.</p>
   <% end %>

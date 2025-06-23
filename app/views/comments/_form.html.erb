@@ -1,0 +1,6 @@
+<%= form_with(model: [post, comment], data: { turbo_stream: true }, class: "mt-4", id: "new_comment_form") do |form| %>
+  <div class="mb-2">
+    <%= form.text_area :body, placeholder: "Write a comment...", class: "w-full p-2 rounded border" %>
+  </div>
+  <%= form.submit "Add Comment", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+<% end %>
