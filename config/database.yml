@@ -12,4 +12,10 @@ test:
   database: blog_test
 
 production:
-  url: <%= ENV["DATABASE_URL"] %>
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+
+  cable:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+
